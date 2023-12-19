@@ -29,24 +29,14 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 			$query = $conn->prepare("SELECT * FROM `users` WHERE `username` = ? AND `password` = ?");
 			$query->bind_param('ss', $username, $password);
 			$query->execute();
-
 			// Get result
 			$result = $query->get_result();
-
 			// Fetch data
 			$rows = $result->fetch_assoc();
-
 			// Display results
-			var_dump($rows);
 			$count = $result->num_rows;
-			echo "<br>" . $count;
-
-
-
 			// Check if count > 0 which mean that the database contain a record about this username
-
 			if ($count > 0) {
-
 				$_SESSION['username'] = $username;
 				$_SESSION['password'] = $password;
 				$_SESSION['userid'] = $rows['user_id'];

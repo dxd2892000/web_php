@@ -1,7 +1,7 @@
 <div class="header-section">
     <div class="container">
         <div class="navbar">
-            <a href="index.php" class="navbar-brand">
+            <a href="home.php" class="navbar-brand">
                 <img src="../../common/logo.png" alt="HUS Logo" style="width: 150px;">
             </a>
             <div class="d-flex menu-wrap align-items-center">
