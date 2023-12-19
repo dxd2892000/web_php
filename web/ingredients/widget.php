@@ -38,12 +38,9 @@ $array = website_settings();
                     <h3>
                         Giờ mở cửa
                     </h3>
-                    <ul class="opening_time">
-                        <li>Monday - Friday 6:30am - 6:00pm</li>
-                        <li>Monday - Friday 6:30am - 6:00pm</li>
-                        <li>Monday - Friday 6:30am - 6:00pm</li>
-                        <li>Monday - Friday 6:30am - 6:00pm</li>
-                    </ul>
+                    <p class="opening_time">
+                        Monday - Friday 6:30am - 6:00pm
+                    </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">

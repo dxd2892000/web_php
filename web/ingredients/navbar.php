@@ -1,14 +1,14 @@
 <div class="header-section">
     <div class="container">
         <div class="navbar">
-            <a href="index.php" class="navbar-brand">
+            <a href="home.php" class="navbar-brand">
                 <img src="../../common/logo.png" alt="HUS Logo" style="width: 150px;">
             </a>
             <div class="d-flex menu-wrap align-items-center">
                 <div class="mainmenu">
                     <ul class="nav">
                         <li><a href="home.php">HOME</a></li>
-                        <li><a href="menu.php">MENUS</a></li>
+                        <li><a href="menu.php">MENU</a></li>
                         <li><a href="about.php">ABOUT</a></li>
                         <li><a href="contact.php">CONTACT</a></li>
                     </ul>

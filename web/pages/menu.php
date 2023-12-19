@@ -64,7 +64,7 @@ include "../ingredients/header.php";
                                                 <?php echo $menu['menu_description']; ?>
                                             </p>
                                             <span class="menu_price">
-                                                <?php echo "$" . $menu['menu_price']; ?>
+                                                <?php echo $menu['menu_price']." nghìn đồng"; ?>
                                             </span>
                                         </div>
                                     </div>
@@ -107,7 +107,7 @@ include "../ingredients/header.php";
                                                 <?php echo $menu['menu_description']; ?>
                                             </p>
                                             <span class="menu_price">
-                                                <?php echo "$" . $menu['menu_price']; ?>
+                                                <?php echo $menu['menu_price']." nghìn đồng"; ?>
                                             </span>
                                         </div>
                                     </div>
