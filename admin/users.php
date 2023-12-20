@@ -4,7 +4,7 @@
 
 	$pageTitle = 'Users';
 
-	if(isset($_SESSION['username_restaurant_qRewacvAqzA']) && isset($_SESSION['password_restaurant_qRewacvAqzA']))
+	if(isset($_SESSION['username']) && isset($_SESSION['password']))
 	{
 		include '../common/connect.php';
   		include '../common/functions.php'; 
@@ -39,8 +39,8 @@
 
             if($do == "Manage")
             {
-                $stmt = $conn->query("SELECT * FROM users");
-                $users = $stmt->fetch_all(MYSQLI_ASSOC);
+                $query = $conn->query("SELECT * FROM users");
+                $users = $query->fetch_all(MYSQLI_ASSOC);
 
             ?>
                 <div class="card">
@@ -97,10 +97,9 @@
                 
                 if($user_id)
                 {
-                    $stmt = $con->prepare("Select * from users where user_id = ?");
-                    $stmt->execute(array($user_id));
-                    $user = $stmt->fetch();
-                    $count = $stmt->rowCount();
+                    $query = $conn->query("Select * from users where user_id = '$user_id'");
+                    $user = $query->fetch_all(MYSQLI_ASSOC);
+                    $count = $query->num_rows;
                     if($count > 0)
                     {
                         ?>
@@ -258,8 +257,7 @@
                             {
                                 try
                                 {
-                                    $stmt = $con->prepare("update users  set username = ?, email = ?, full_name = ? where user_id = ? ");
-                                    $stmt->execute(array($user_name,$user_email,$user_fullname,$user_id));
+                                    $query = $conn->query("UPDATE users  SET username = '$user_name', email = '$user_email', full_name = '$user_fullname' WHERE user_id = '$user_id' ");
                                     
                                     ?> 
                                         <!-- SUCCESS MESSAGE -->
@@ -284,8 +282,8 @@
                                 $user_password = sha1($user_password);
                                 try
                                 {
-                                    $stmt = $con->prepare("update users  set username = ?, email = ?, full_name = ?, password = ? where user_id = ? ");
-                                    $stmt->execute(array($user_name,$user_email,$user_fullname,$user_password,$user_id));
+
+                                    $query = $conn->query("UPDATE users  SET `username` = $user_name'', `email` = '$user_email', `full_name` = '$user_fullname', `password` = '$user_password' WHERE `user_id` = '$user_id' ");
                                     
                                     ?> 
                                         <!-- SUCCESS MESSAGE -->

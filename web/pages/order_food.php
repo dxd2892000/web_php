@@ -63,7 +63,7 @@
 				                                	echo "<div class = 'item_select_part'>";
 				                                    	echo "<div class = 'menu_price_field'>";
 				    										echo "<span style = 'font-weight: bold;'>";
-				                                    			echo $row['menu_price']."$";
+				                                    			echo $row['menu_price']." nghìn đồng";
 				                                    		echo "</span>";
 				                                    	echo "</div>";
 				                                    ?>

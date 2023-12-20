@@ -2,9 +2,9 @@
     ob_start();
 	session_start();
 
-	$pageTitle = 'Clients';
+	$pageTitle = 'Customers';
 
-	if(isset($_SESSION['username_restaurant_qRewacvAqzA']) && isset($_SESSION['password_restaurant_qRewacvAqzA']))
+	if(isset($_SESSION['username']) && isset($_SESSION['password']))
 	{
 		include '../common/connect.php';
   		include '../common/functions.php'; 
@@ -36,8 +36,8 @@
 
             if($do == "Manage")
             {
-                $stmt = $conn->query("SELECT * FROM customers");
-                $clients = $stmt->fetch_all(MYSQLI_ASSOC);
+                $query = $conn->query("SELECT * FROM customers");
+                $clients = $query->fetch_all(MYSQLI_ASSOC);
 
             ?>
                 <div class="card">

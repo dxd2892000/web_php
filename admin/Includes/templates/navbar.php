@@ -130,6 +130,6 @@
             <div class="inside-page" style="padding:20px">
                 <div class="page_title_top" style="margin-bottom: 1.5rem!important;">
                     <h1 style="color: #5a5c69!important;font-size: 1.75rem;font-weight: 400;line-height: 1.2;">
-                        <?php echo $pageTitle; ?>
+                        <?php getTitle(); ?>
                     </h1>
                 </div>
