@@ -27,99 +27,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
         vertical_menu.getElementsByClassName('menus_link')[0].className += " active_link";
     </script>
 
-    <style type="text/css">
-        .menus-table {
-            -webkit-box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15) !important;
-            box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15) !important;
-        }
-
-        .thumbnail>img {
-            width: 100%;
-            object-fit: cover;
-            height: 300px;
-        }
-
-        .thumbnail .caption {
-            padding: 9px;
-            color: #333;
-        }
-
-        .menu_form {
-            max-width: 750px;
-            margin: auto;
-        }
-
-        .panel-X {
-            border: 0;
-            -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .25);
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .25);
-            border-radius: .25rem;
-            position: relative;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-box-direction: normal;
-            -ms-flex-direction: column;
-            flex-direction: column;
-            min-width: 0;
-            word-wrap: break-word;
-            background-color: #fff;
-            background-clip: border-box;
-            margin: auto;
-            width: 600px;
-        }
-
-        .panel-header-X {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-            justify-content: space-between;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            padding-left: 1.25rem;
-            padding-right: 1.25rem;
-            border-bottom: 1px solid rgb(226, 226, 226);
-        }
-
-        .save-header-X {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-            justify-content: space-between;
-            min-height: 65px;
-            padding: 0 1.25rem;
-            background-color: #f1fafd;
-        }
-
-        .panel-header-X>.main-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #313e54;
-            padding: 15px 0;
-        }
-
-        .panel-body-X {
-            padding: 1rem 1.25rem;
-        }
-
-        .save-header-X .icon {
-            width: 20px;
-            text-align: center;
-            font-size: 20px;
-            color: #5b6e84;
-            margin-right: 1.25rem;
-        }
-    </style>
-
     <?php
 
     $do = '';
@@ -175,49 +82,14 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                             echo $menu['menu_description'];
                             echo "</td>";
                             echo "<td>";
-                            echo $menu['menu_price']." nghìn đồng";
+                            echo $menu['menu_price'] . " nghìn đồng";
                             echo "</td>";
                             echo "<td>";
                             /****/
-                            $delete_data = "delete_" . $menu["menu_id"];
-                            $view_data = "view_" . $menu["menu_id"];
+                            $delete_data = $menu["menu_id"];
+                            $view_data = $menu["menu_id"];
                         ?>
                             <ul class="list-inline m-0">
-
-                                <!-- VIEW BUTTON -->
-
-                                <li class="list-inline-item" data-toggle="tooltip" title="View">
-                                    <button class="btn btn-primary btn-sm rounded-0" type="button" data-toggle="modal" data-target="#<?php echo $view_data; ?>" data-placement="top">
-                                        <i class="fa fa-eye"></i>
-                                    </button>
-
-                                    <!-- VIEW Modal -->
-
-                                    <div class="modal fade" id="<?php echo $view_data; ?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $view_data; ?>" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-body">
-
-                                                    <div class="thumbnail" style="cursor:pointer">
-                                                        <?php $source = "Uploads/images/" . $menu['menu_image']; ?>
-                                                        <img src="<?php echo $source; ?>">
-                                                        <div class="caption">
-                                                            <h3>
-                                                                <span style="float: right;">$<?php echo $menu['menu_price']; ?></span>
-                                                                <?php echo $menu['menu_name']; ?>
-                                                            </h3>
-                                                            <p>
-                                                                <?php echo $menu['menu_description']; ?>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-
                                 <!-- EDIT BUTTON -->
 
                                 <li class="list-inline-item" data-toggle="tooltip" title="Edit">
@@ -231,30 +103,11 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                                 <!-- DELETE BUTTON -->
 
                                 <li class="list-inline-item" data-toggle="tooltip" title="Delete">
-                                    <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="modal" data-target="#<?php echo $delete_data; ?>" data-placement="top"><i class="fa fa-trash"></i>
+                                    <button class="btn btn-danger btn-sm rounded-0" id="delete_menu_bttn">
+                                        <a href="actions/delete_menu.php?menu_id=<?php echo $menu['menu_id']; ?>" style="color: white;">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
                                     </button>
-
-                                    <!-- Delete Modal -->
-
-                                    <div class="modal fade" id="<?php echo $delete_data; ?>" tabindex="-1" role="dialog" aria-labelledby="<?php echo $delete_data; ?>" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Delete Menu</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Are you sure you want to delete this Menu "<?php echo strtoupper($menu['menu_name']); ?>"?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                    <button type="button" data-id="<?php echo $menu['menu_id']; ?>" class="btn btn-danger delete_menu_bttn">Delete</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </li>
                             </ul>
                         <?php
@@ -274,7 +127,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
     elseif ($do == 'Add') {
     ?>
-
         <div class="card">
             <div class="card-header">
                 Add New Menu
@@ -373,7 +225,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                             <!-- MENU PRICE INPUT -->
 
                             <div class="form-group">
-                                <label for="menu_price">Menu Price($)</label>
+                                <label for="menu_price">Menu Price(nghìn đồng)</label>
                                 <input type="text" class="form-control" value="<?php echo (isset($_POST['menu_price'])) ? htmlspecialchars($_POST['menu_price']) : '' ?>" placeholder="Menu Price" name="menu_price">
                                 <?php
 
@@ -449,7 +301,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                 </form>
             </div>
         </div>
-
         <?php
 
         /*** ADD NEW menu ***/
@@ -460,7 +311,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
             $menu_price = test_input($_POST['menu_price']);
             $menu_description = test_input($_POST['menu_description']);
             $image = rand(0, 100000) . '_' . $_FILES['menu_image']['name'];
-            move_uploaded_file($_FILES['menu_image']['tmp_name'], "Uploads/images//" . $image);
+            move_uploaded_file($_FILES['menu_image']['tmp_name'], "../images/foods/" . $image);
 
             try {
                 $query = $conn->query("INSERT INTO menus(menu_name,menu_description,menu_price,menu_image,category_id) VALUES('$menu_name','$menu_description','$menu_price','$image','$menu_category') ");
@@ -484,7 +335,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
         if ($menu_id) {
             $query = $conn->query("SELECT * FROM menus WHERE menu_id = '$menu_id'");
-            $menu = $query->fetch_all(MYSQLI_ASSOC);
+            $menu = $query->fetch_assoc();
             $count = $query->num_rows;
 
             if ($count > 0) {
@@ -723,8 +574,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
             header('Location: menus.php');
         }
     }
-
-
     /*** FOOTER BOTTON ***/
 
     include 'Includes/templates/footer.php';
@@ -738,30 +587,6 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 <!-- JS SCRIPT -->
 
 <script type="text/javascript">
-    // When delete menu button is clicked
-
-    $('.delete_menu_bttn').click(function() {
-        var menu_id = $(this).data('id');
-        var do_ = "Delete";
-
-        $.ajax({
-            url: "ajax_files/menus_ajax.php",
-            method: "POST",
-            data: {
-                menu_id: menu_id,
-                do_: do_
-            },
-            success: function(data) {
-                swal("Delete Menu", "The menu has been deleted successfully!", "success").then((value) => {
-                    window.location.replace("menus.php");
-                });
-            },
-            error: function(xhr, status, error) {
-                alert('AN ERROR HAS BEEN ENCOUNTERED WHILE TRYING TO EXECUTE YOUR REQUEST');
-            }
-        });
-    });
-
     // UPLOAD IMAGE ADD MENU
 
     function readURL(input) {
@@ -800,3 +625,97 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
         readURL_Edit_Menu(this);
     });
 </script>
+
+<style type="text/css">
+    .menus-table {
+        -webkit-box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15) !important;
+        box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15) !important;
+    }
+
+    .thumbnail>img {
+        width: 100%;
+        object-fit: cover;
+        height: 300px;
+    }
+
+    .thumbnail .caption {
+        padding: 9px;
+        color: #333;
+    }
+
+    .menu_form {
+        max-width: 750px;
+        margin: auto;
+    }
+
+    .panel-X {
+        border: 0;
+        -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .25);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .25);
+        border-radius: .25rem;
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        margin: auto;
+        width: 600px;
+    }
+
+    .panel-header-X {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        border-bottom: 1px solid rgb(226, 226, 226);
+    }
+
+    .save-header-X {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        min-height: 65px;
+        padding: 0 1.25rem;
+        background-color: #f1fafd;
+    }
+
+    .panel-header-X>.main-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #313e54;
+        padding: 15px 0;
+    }
+
+    .panel-body-X {
+        padding: 1rem 1.25rem;
+    }
+
+    .save-header-X .icon {
+        width: 20px;
+        text-align: center;
+        font-size: 20px;
+        color: #5b6e84;
+        margin-right: 1.25rem;
+    }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>

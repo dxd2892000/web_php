@@ -97,8 +97,8 @@
                 
                 if($user_id)
                 {
-                    $query = $conn->query("Select * from users where user_id = '$user_id'");
-                    $user = $query->fetch_all(MYSQLI_ASSOC);
+                    $query = $conn->query("SELECT * FROM users WHERE user_id = '$user_id'");
+                    $user = $query->fetch_assoc();
                     $count = $query->num_rows;
                     if($count > 0)
                     {

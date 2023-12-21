@@ -88,13 +88,7 @@
                         <span style="padding-left:6px;">Menus</span>
                     </a>
                 </li>
-                <li>
-                    <a href="gallery.php" class="a-verMenu gallery_link">
-                        <i class="far fa-image icon-ver"></i>
-                        <span style="padding-left:6px;">Gallery</span>
-                    </a>
-                </li>
-                
+                                
                 <div class="dropdown-divider"></div>
                 
                 <div class="sidenav-menu-heading">
