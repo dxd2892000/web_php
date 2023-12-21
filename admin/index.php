@@ -73,7 +73,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
 		<!-- PASSWORD INPUT -->
 
-		<div class="form-input">
+		<div clsss="form-input">
 			<span class="txt1">Password</span>
 			<input type="password" name="password" class="form-control" oninput="document.getElementById('password_required').style.display = 'none'" id="password" autocomplete="new-password">
 			<div class="invalid-feedback" id="password_required">Password is required!</div>

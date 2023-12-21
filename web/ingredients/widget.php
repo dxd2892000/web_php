@@ -24,12 +24,12 @@ $array = website_settings();
                 <div class="footer_widget">
                     <h3>THÔNG TIN</h3>
                     <p>
-                        <?php echo $array[3]; ?>
+                        <?php echo "Địa chỉ: ".$array[3]; ?>
                     </p>
                     <p>
-                        <?php echo $array[1]; ?>
+                        <?php echo "Email: ".$array[1]; ?>
                         <br>
-                        <?php echo $array[2]; ?>
+                        <?php echo "Số điện thoại: ".$array[2]; ?>
                     </p>
                 </div>
             </div>
