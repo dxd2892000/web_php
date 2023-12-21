@@ -4,7 +4,7 @@ session_start();
 
 $pageTitle = 'Menus - Dishes';
 
-if (isset($_SESSION['username_restaurant_qRewacvAqzA']) && isset($_SESSION['password_restaurant_qRewacvAqzA'])) {
+if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
     include '../common/connect.php';
     include '../common/functions.php';
     include 'Includes/templates/header.php';
@@ -130,10 +130,8 @@ if (isset($_SESSION['username_restaurant_qRewacvAqzA']) && isset($_SESSION['pass
         $do = 'Manage';
 
     if ($do == "Manage") {
-        $stmt = $conn->prepare("SELECT * FROM menus m, menu_categories mc where mc.category_id = m.category_id");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $menus = $result->fetch_all(MYSQLI_ASSOC);
+        $query = $conn->query("SELECT * FROM menus m, menu_categories mc where mc.category_id = m.category_id");
+        $menus = $query->fetch_all(MYSQLI_ASSOC);
 
     ?>
         <div class="card">
@@ -177,7 +175,7 @@ if (isset($_SESSION['username_restaurant_qRewacvAqzA']) && isset($_SESSION['pass
                             echo $menu['menu_description'];
                             echo "</td>";
                             echo "<td>";
-                            echo "$" . $menu['menu_price'];
+                            echo $menu['menu_price']." nghìn đồng";
                             echo "</td>";
                             echo "<td>";
                             /****/
@@ -328,9 +326,8 @@ if (isset($_SESSION['username_restaurant_qRewacvAqzA']) && isset($_SESSION['pass
 
                             <div class="form-group">
                                 <?php
-                                $stmt = $con->prepare("SELECT * FROM menu_categories");
-                                $stmt->execute();
-                                $rows_categories = $stmt->fetchAll();
+                                $query = $conn->query("SELECT * FROM menu_categories");
+                                $rows_categories = $query->fetch_all(MYSQLI_ASSOC);
                                 ?>
                                 <label for="menu_category">Menu Category</label>
                                 <select class="custom-select" name="menu_category">
@@ -466,9 +463,7 @@ if (isset($_SESSION['username_restaurant_qRewacvAqzA']) && isset($_SESSION['pass
             move_uploaded_file($_FILES['menu_image']['tmp_name'], "Uploads/images//" . $image);
 
             try {
-                $stmt = $con->prepare("insert into menus(menu_name,menu_description,menu_price,menu_image,category_id) values(?,?,?,?,?) ");
-                $stmt->execute(array($menu_name, $menu_description, $menu_price, $image, $menu_category));
-
+                $query = $conn->query("INSERT INTO menus(menu_name,menu_description,menu_price,menu_image,category_id) VALUES('$menu_name','$menu_description','$menu_price','$image','$menu_category') ");
         ?>
                 <!-- SUCCESS MESSAGE -->
 
@@ -488,10 +483,9 @@ if (isset($_SESSION['username_restaurant_qRewacvAqzA']) && isset($_SESSION['pass
         $menu_id = (isset($_GET['menu_id']) && is_numeric($_GET['menu_id'])) ? intval($_GET['menu_id']) : 0;
 
         if ($menu_id) {
-            $stmt = $con->prepare("Select * from menus where menu_id = ?");
-            $stmt->execute(array($menu_id));
-            $menu = $stmt->fetch();
-            $count = $stmt->rowCount();
+            $query = $conn->query("SELECT * FROM menus WHERE menu_id = '$menu_id'");
+            $menu = $query->fetch_all(MYSQLI_ASSOC);
+            $count = $query->num_rows;
 
             if ($count > 0) {
             ?>
@@ -551,9 +545,8 @@ if (isset($_SESSION['username_restaurant_qRewacvAqzA']) && isset($_SESSION['pass
 
                                     <div class="form-group">
                                         <?php
-                                        $stmt = $con->prepare("SELECT * FROM menu_categories");
-                                        $stmt->execute();
-                                        $rows_categories = $stmt->fetchAll();
+                                        $query = $conn->query("SELECT * FROM menu_categories");
+                                        $rows_categories = $query->fetch_all(MYSQLI_ASSOC);
                                         ?>
                                         <label for="menu_category">Menu Category</label>
                                         <select class="custom-select" name="menu_category">
@@ -641,7 +634,7 @@ if (isset($_SESSION['username_restaurant_qRewacvAqzA']) && isset($_SESSION['pass
                                                 <label for="edit_menu_imageUpload"></label>
                                             </div>
                                             <div class="avatar-preview">
-                                                <?php $source = "Uploads/images/" . $menu['menu_image']; ?>
+                                                <?php $source = "../images/foods/" . $menu['menu_image']; ?>
                                                 <div style="background-image: url('<?php echo $source; ?>');" id="edit_menu_imagePreview">
                                                 </div>
                                             </div>
@@ -687,9 +680,7 @@ if (isset($_SESSION['username_restaurant_qRewacvAqzA']) && isset($_SESSION['pass
 
                     if (empty($_FILES['menu_image']['name'])) {
                         try {
-                            $stmt = $con->prepare("update menus  set menu_name = ?, menu_description = ?, menu_price = ?, category_id = ? where menu_id = ? ");
-                            $stmt->execute(array($menu_name, $menu_description, $menu_price, $menu_category, $menu_id));
-
+                            $query = $conn->query("UPDATE menus  SET menu_name = '$menu_name', menu_description = '$menu_description', menu_price = '$menu_price', category_id = '$menu_category' WHERE menu_id = '$menu_id' ");
                 ?>
                             <!-- SUCCESS MESSAGE -->
 
@@ -706,11 +697,9 @@ if (isset($_SESSION['username_restaurant_qRewacvAqzA']) && isset($_SESSION['pass
                         }
                     } else {
                         $image = rand(0, 100000) . '_' . $_FILES['menu_image']['name'];
-                        move_uploaded_file($_FILES['menu_image']['tmp_name'], "Uploads/images//" . $image);
+                        move_uploaded_file($_FILES['menu_image']['tmp_name'], "../images/foods/" . $image);
                         try {
-                            $stmt = $con->prepare("update menus  set menu_name = ?, menu_description = ?, menu_price = ?, category_id = ?, menu_image = ? where menu_id = ? ");
-                            $stmt->execute(array($menu_name, $menu_description, $menu_price, $menu_category, $image, $menu_id));
-
+                            $query = $conn->query("UPDATE menus  SET menu_name = '$menu_name', menu_description = '$menu_description', menu_price = '$menu_price', category_id = '$menu_category', menu_image = '$image' WHERE menu_id = '$menu_id' ");
                         ?>
                             <!-- SUCCESS MESSAGE -->
 

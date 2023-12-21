@@ -1,26 +1,20 @@
 <?php
-/*
-		Title Function That Echo The Page Title In Case The Page Has The Variable $pageTitle And Echo Default Title For Other Pages
-	*/
+
 function getTitle()
 {
 	global $pageTitle;
-	if (isset($pageTitle))
-		echo $pageTitle . " | Vincent Restaurant - Your Restaurant";
+	if(isset($pageTitle))
+		echo $pageTitle." | HUS Restaurant - HUS FOODIES";
 	else
-		echo "Vincent Restaurant | Your Restaurant";
+		echo "HUS Restaurant";
 }
 
-/*
-		This function returns the number of items in a given table
-	*/
-
 function countItems($item, $table)
-{
+{	
 	global $conn;
-	$stat_ = $conn->query("SELECT COUNT($item) FROM $table");
-
-	return $stat_->fetch_column();
+	$query = $conn->query("SELECT COUNT(`$item`) FROM `$table`");
+	$result = $query->fetch_row();
+	return $result[0];
 }
 
 /*
@@ -34,10 +28,9 @@ function countItems($item, $table)
 	*/
 function checkItem($select, $from, $value)
 {
-	global $con;
-	$statment = $con->prepare("SELECT $select FROM $from WHERE $select = ? ");
-	$statment->execute(array($value));
-	$count = $statment->rowCount();
+	global $conn;
+	$query = $conn->query("SELECT `$select` FROM `$from` WHERE `$select` = `$value` ");
+	$count = $query->num_rows;
 
 	return $count;
 }

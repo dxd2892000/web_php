@@ -35,12 +35,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 			$rows = $result->fetch_assoc();
 			// Display results
 			$count = $result->num_rows;
+
 			// Check if count > 0 which mean that the database contain a record about this username
 			if ($count > 0) {
 				$_SESSION['username'] = $username;
 				$_SESSION['password'] = $password;
 				$_SESSION['userid'] = $rows['user_id'];
-				header('Location: dashboard.php');
+				header('Location:dashboard.php');
 				die();
 			} else {
 		?>

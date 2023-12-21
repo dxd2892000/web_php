@@ -27,6 +27,5 @@ if (isset($_POST['do']) && $_POST['do'] == "Add") {
 if (isset($_POST['do']) && $_POST['do'] == "Delete") {
     $category_id = $_POST['category_id'];
 
-    $stmt = $con->prepare("DELETE from menu_categories where category_id = ?");
-    $stmt->execute(array($category_id));
+    $query = $conn->query("DELETE FROM menu_categories WHERE category_id = '$category_id'");
 }

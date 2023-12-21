@@ -1,9 +1,6 @@
 <!-- PHP INCLUDES -->
 
 <?php
-    //Set page title
-    $pageTitle = 'Order Food';
-
     include("../../common/connect.php");
     include("../../common/functions.php");
     include("../ingredients/header.php");
@@ -14,71 +11,11 @@
 
     <!-- START ORDER FOOD SECTION -->
 
-	<section class="order_food_section">
-
-        <?php
-
-            if(isset($_POST['submit_order_food_form']) && $_SERVER['REQUEST_METHOD'] === 'POST')
-            {
-                // Selected Menus
-
-                $selected_menus = $_POST['selected_menus'];
-
-                //Client Details
-
-                $client_full_name = test_input($_POST['client_full_name']);
-                $delivery_address = test_input($_POST['client_delivery_address']);
-                $client_phone_number = test_input($_POST['client_phone_number']);
-                $client_email = test_input($_POST['client_email']);
-
-                $conn->begin_transaction();
-                try
-                {
-                    $stmtgetCurrentClientID = $conn->prepare("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'restaurant_hus' AND TABLE_NAME = 'customers'");
-            
-                    $stmtgetCurrentClientID->execute();
-                    $result = $stmtgetCurrentClientID->get_result();
-                    $client_id = $result->fetch_all(MYSQLI_ASSOC);
-
-                    $stmtClient = $conn->prepare("insert into customers(cus_name,cus_phone,cus_email) 
-                                values(?,?,?)");
-                    $stmtClient->execute(array($client_full_name,$client_phone_number,$client_email));
-
-                    $stmtgetCurrentOrderID = $conn->prepare("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'restaurant_website' AND TABLE_NAME = 'placed_orders'");
-            
-                    $stmtgetCurrentOrderID->execute();
-                    $result = $stmtgetCurrentOrderID->get_result();
-                    $order_id = $result->fetch_all(MYSQLI_ASSOC);
-                    
-                    $stmt_order = $conn->prepare("insert into placed_orders(order_time, cus_id, delivery_address) values(?, ?, ?)");
-                    $stmt_order->execute(array(Date("Y-m-d H:i"),$client_id[0],$delivery_address));
-
-                    foreach($selected_menus as $menu)
-                    {
-                        $stmt = $conn->prepare("insert into in_order(order_id, menu_id) values(?, ?)");
-                        $stmt->execute(array($order_id[0],$menu));
-                    }
-                    
-                    echo "<div class = 'alert alert-success'>";
-                        echo "Great! Your order has been created successfully.";
-                    echo "</div>";
-
-                    $conn->commit();
-                }
-                catch(Exception $e)
-                {
-                    $conn->rollBack();
-                    echo "<div class = 'alert alert-danger'>"; 
-                        echo $e->getMessage();
-                    echo "</div>";
-                }
-            }
-
-        ?>
+	<div class="order_food_section">
 
         <!-- ORDER FOOD FORM -->
 
-		<form method="post" id="order_food_form" action="order_food.php">
+		<form method="post" id="order_food_form" action="../actions/order-food.php">
 		
 			<!-- SELECT MENUS -->
 
@@ -98,7 +35,7 @@
 
 				<div>
 					<?php
-						$stmt = $conn->query("Select * from menu_categories");
+						$stmt = $conn->query("SELECT * FROM menu_categories");
                     	$menu_categories = $stmt->fetch_all(MYSQLI_ASSOC);
 
 
@@ -126,7 +63,7 @@
 				                                	echo "<div class = 'item_select_part'>";
 				                                    	echo "<div class = 'menu_price_field'>";
 				    										echo "<span style = 'font-weight: bold;'>";
-				                                    			echo $row['menu_price']."$";
+				                                    			echo $row['menu_price']." nghìn đồng";
 				                                    		echo "</span>";
 				                                    	echo "</div>";
 				                                    ?>
@@ -151,21 +88,21 @@
 			</div>
 
 
-            <!-- CLIENT DETAILS -->
+            <!-- CUSTOMERS DETAILS -->
 
 
-            <div class="client_details_tab order_food_tab" id="clients_tab">
+            <div class="cus_details_tab order_food_tab" id="cuss_tab">
 
                 <div class="text_header">
                     <span>
-                        2. Client Details
+                        2. Customers Details
                     </span>
                 </div>
 
                 <div>
                     <div class="form-group colum-row row">
                         <div class="col-sm-12">
-                            <input type="text" name="client_full_name" id="client_full_name" oninput="document.getElementById('required_fname').style.display = 'none'" onkeyup="this.value=this.value.replace(/[^\sa-zA-Z]/g,'');" class="form-control" placeholder="Full name">
+                            <input type="text" name="cus_full_name" id="cus_full_name" oninput="document.getElementById('required_fname').style.display = 'none'" onkeyup="this.value=this.value.replace(/[^\sa-zA-Z]/g,'');" class="form-control" placeholder="Full name">
                             <div class="invalid-feedback" id="required_fname">
                                 Invalid Name!
                             </div>
@@ -173,13 +110,13 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-sm-6">
-                            <input type="email" name="client_email" id="client_email" oninput="document.getElementById('required_email').style.display = 'none'" class="form-control" placeholder="E-mail">
+                            <input type="email" name="cus_email" id="cus_email" oninput="document.getElementById('required_email').style.display = 'none'" class="form-control" placeholder="E-mail">
                             <div class="invalid-feedback" id="required_email">
                                 Invalid E-mail!
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <input type="text"  name="client_phone_number" id="client_phone_number" oninput="document.getElementById('required_phone').style.display = 'none'" class="form-control" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="Phone number">
+                            <input type="text"  name="cus_phone_number" id="cus_phone_number" oninput="document.getElementById('required_phone').style.display = 'none'" class="form-control" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" placeholder="Phone number">
                             <div class="invalid-feedback" id="required_phone">
                                 Invalid Phone number!
                             </div>
@@ -187,7 +124,7 @@
                     </div>
                     <div class="form-group colum-row row">
                         <div class="col-sm-12">
-                            <input type="text" name="client_delivery_address" id="client_delivery_address" oninput="document.getElementById('required_delivery_address').style.display = 'none'" class="form-control" placeholder="Delivery Address">
+                            <input type="text" name="cus_delivery_address" id="cus_delivery_address" oninput="document.getElementById('required_delivery_address').style.display = 'none'" class="form-control" placeholder="Delivery Address">
                             <div class="invalid-feedback" id="required_delivery_address">
                                 
                             </div>
@@ -214,7 +151,7 @@
             </div>
 
 		</form>
-	</section>
+	</div>
 
 
 
@@ -320,7 +257,7 @@
                     x[currentTab].getElementsByClassName("alert")[0].style.display = "none";
                 }
             }
-            if(id_tab == "clients_tab")
+            if(id_tab == "cuss_tab")
             {
                 y = x[currentTab].getElementsByTagName("input");
                 z = x[currentTab].getElementsByClassName("invalid-feedback");
@@ -527,7 +464,7 @@
             cursor: pointer;
         }
 
-        .client_details_tab  .form-control
+        .cus_details_tab  .form-control
         {
             background-color: #fff;
             border-radius: 0;
@@ -536,7 +473,7 @@
             border: 2px solid #eee;
         }
 
-        .client_details_tab  .form-control:focus 
+        .cus_details_tab  .form-control:focus 
         {
             border-color: #ffc851;
             box-shadow: none;

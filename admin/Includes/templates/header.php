@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0" />
 	<meta name="author" content="JAIRI IDRISS">
-	<title><?php getTitle(); ?></title>
+	<title>ADMIN HUS</title>
 
 	<!-- EXTERNAL CSS LINKS -->
 	<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">

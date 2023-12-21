@@ -6,11 +6,10 @@
                     <img src="../../images/quality_food_img.png">
                     <div class="caption">
                         <h3>
-                            Quality Foods
+                            Sạch sẽ, Tươi mát
                         </h3>
                         <p>
-                            Sit amet, consectetur adipiscing elit quisque eget maximus velit,
-                            non eleifend libero curabitur dapibus mauris sed leo cursus aliquetcras suscipit.
+                            Lựa chọn những nguyên liệu tươi sống nhất. Không sử dụng những thực phẩm cũ
                         </p>
                     </div>
                 </div>
@@ -20,11 +19,10 @@
                     <img src="../../images/fast_delivery_img.png">
                     <div class="caption">
                         <h3>
-                            Quality Foods
+                            Nhanh chóng
                         </h3>
                         <p>
-                            Sit amet, consectetur adipiscing elit quisque eget maximus velit,
-                            non eleifend libero curabitur dapibus mauris sed leo cursus aliquetcras suscipit.
+                            Ra món nhanh chóng, phục vụ quý khách hàng với thái độ vui vẻ, thân thiện.
                         </p>
                     </div>
                 </div>
@@ -34,11 +32,10 @@
                     <img src="../../images/original_taste_img.png">
                     <div class="caption">
                         <h3>
-                            Quality Foods
+                            Ngon tuyệt
                         </h3>
                         <p>
-                            Sit amet, consectetur adipiscing elit quisque eget maximus velit,
-                            non eleifend libero curabitur dapibus mauris sed leo cursus aliquetcras suscipit.
+                            Mang đến cho khách hành những món ăn chất lượng, phù hợp khẩu vị của mọi người.
                         </p>
                     </div>
                 </div>

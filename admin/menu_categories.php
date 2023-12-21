@@ -4,7 +4,7 @@
 
 	$pageTitle = 'Menu Categories';
 
-	if(isset($_SESSION['username_restaurant']) && isset($_SESSION['password_restaurant']))
+	if(isset($_SESSION['username']) && isset($_SESSION['password']))
 	{
 		include '../common/connect.php';
   		include '../common/functions.php'; 
@@ -43,8 +43,8 @@
 
         <?php
             
-            $stmt = $conn->query("SELECT * FROM menu_categories");
-            $menu_categories = $stmt->fetch_all(MYSQLI_ASSOC);
+            $query = $conn->query("SELECT * FROM menu_categories");
+            $menu_categories = $query->fetch_all(MYSQLI_ASSOC);
 
         ?>
             <div class="card">
