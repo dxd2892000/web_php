@@ -175,7 +175,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                             echo $menu['menu_description'];
                             echo "</td>";
                             echo "<td>";
-                            echo "$" . $menu['menu_price'];
+                            echo $menu['menu_price']." nghìn đồng";
                             echo "</td>";
                             echo "<td>";
                             /****/
@@ -634,7 +634,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                                                 <label for="edit_menu_imageUpload"></label>
                                             </div>
                                             <div class="avatar-preview">
-                                                <?php $source = "Uploads/images/" . $menu['menu_image']; ?>
+                                                <?php $source = "../images/foods/" . $menu['menu_image']; ?>
                                                 <div style="background-image: url('<?php echo $source; ?>');" id="edit_menu_imagePreview">
                                                 </div>
                                             </div>

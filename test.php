@@ -1,49 +1,53 @@
-<?php
-include "common/connect.php";
-// $stmt_menus = $conn->prepare("Select * from menus where category_id = ?");
-// $stmt_menus->execute(array($row['category_id']));
-// $stmt_menus->execute([1]);
-// $result_menus = $stmt_menus->get_result();
+<!DOCTYPE html>
+<html lang="en">
 
-// if ($result_menus->num_rows == 0) {
-//     echo "<div style='margin:auto'>No Available Menus for this category!</div>";
-// }else{
-//     $rows_menus = $result_menus->fetch_all(MYSQLI_ASSOC);
-// }
-// var_dump($rows_menus);
-// echo "<br>";
-// echo $rows_menus[0]['menu_id'];
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
 
-// $stat_ = $conn->query("SELECT COUNT(cus_id) FROM customers");
+<body>
+    <div class="container">
+        <h2>Carousel Example</h2>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
 
-// $stmt = $conn->prepare("SELECT * FROM menus m, menu_categories mc where mc.category_id = m.category_id");
-// $stmt->execute();
-// $result = $stmt->get_result();
-// $menus = $result->fetch_all(MYSQLI_ASSOC);
-// var_dump($menus);
-// echo "<br>";
-// echo $menus['menu_id'][1];
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="images/foods/banh_cay.jpg" alt="Los Angeles" style="width:100%;">
+                </div>
 
-// $stmt = $conn->query("SELECT * FROM menu_categories");
-// $menu_categories = $stmt->fetch_all(MYSQLI_ASSOC);
-// var_dump($menu_categories);
-// $request = $conn->query("SELECT menu_name,menu_image FROM menus");
-// $result = $request->fetch_all(MYSQLI_ASSOC);
-// foreach($result as $row){
-//     $conn->query("INSERT INTO `image_gallery` (`image_name`, `image`) VALUES ()")
-// }
-// $resultCurrentCusID = $conn->query("SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'restaurant' AND TABLE_NAME = 'customers'");
-// $cus_id = $resultCurrentCusID->fetch_row();
-// var_dump($cus_id);
-// echo $cus_id[0];
-// $query = $conn->query("SELECT `user_id`, `username`, `password` FROM `users` WHERE `username` = 'ducdx' AND `password` = 'duc12345'");
-// $rows = $query->fetch_assoc();
-// $count = $query->num_rows;
-// var_dump($rows);
-// echo "<br>".$count;
-// echo "<br>".$rows['user_id'];
-$query = $conn->query("SELECT COUNT(cus_id) FROM customers");
-$result = $query->fetch_row();
-var_dump($result);
-echo $result[0];
-?>
+                <div class="item">
+                    <img src="images/foods/banh_mi_bi.jpg" alt="Chicago" style="width:100%;">
+                </div>
+
+                <div class="item">
+                    <img src="images/foods/banh_chuoi_chien.jpg" alt="New york" style="width:100%;">
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,88 +1,48 @@
-<?php
-$query = $conn->query("SELECT menu_image FROM menus LIMIT 20");
-$rows = $query->fetch_all(MYSQLI_ASSOC);
-?>
-<div class="image-gallery">
-    <h2 style="text-align: center;margin-bottom: 30px">IMAGE GALLERY</h2>
-    <div class="slider-container">
-        <?php
-        foreach ($rows as $row) {
-            $source = "../../images/foods/" . $row['menu_image'];
-            // echo $source;
-        ?>
-            <div class="slide fade">
-                <img src="<?php echo $source; ?>" alt="Slide 2">
-            </div>
-        <?php
-        }
-        ?>
+<div class="gallery">
+<div class="container">
+  <h2>MỘT SỐ HÌNH ẢNH</h2>  
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
 
-        <!-- <div class="slide fade">
-            <img src="image2.jpg" alt="Slide 2">
-        </div>
-        <div class="slide fade">
-            <img src="image3.jpg" alt="Slide 3">
-        </div> -->
-        <!-- Thêm các slide khác nếu cần -->
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="../../images/foods/banh_cay.jpg" alt="Los Angeles" style="width:100%;height: 500px;">
+      </div>
+
+      <div class="item">
+        <img src="../../images/foods/banh_mi_bi.jpg" alt="Chicago" style="width:100%;height: 500px;">
+      </div>
+    
+      <div class="item">
+        <img src="../../images/foods/banh_chuoi_chien.jpg" alt="New york" style="width:100%;height: 500px;">
+      </div>
     </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
 </div>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <style>
-    .slider-container {
-        position: relative;
-        width: 100%;
-        max-width: 600px;
-        margin: auto;
-    }
-
-    .slide {
-        display: none;
-    }
-
-    img {
-        width: 80%;
-    }
-
-    .fade {
-        animation: fade 2s ease-in-out infinite;
-    }
-
-    @keyframes fade {
-
-        0%,
-        100% {
-            opacity: 0;
-        }
-
-        25%,
-        75% {
-            opacity: 1;
-        }
+    .gallery{
+        background-color: #f5fcf4;
+        text-align: center;
     }
 </style>
-
-<script>
-    let slideIndex = 0;
-
-    function showSlides() {
-        let i;
-        const slides = document.getElementsByClassName("slide");
-
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-
-        slideIndex++;
-
-        if (slideIndex > slides.length) {
-            slideIndex = 1;
-        }
-
-        slides[slideIndex - 1].style.display = "block";
-
-        setTimeout(showSlides, 2000); // Thay đổi 2000 thành thời gian hiển thị mỗi slide (milliseconds)
-    }
-
-    document.addEventListener("DOMContentLoaded", showSlides);
-</script>
