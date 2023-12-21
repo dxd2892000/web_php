@@ -1,6 +1,6 @@
 <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
 <?php
-include '../../comon/connect.php';
+include '../../common/connect.php';
 include '../../common/functions.php';
 if (isset($_GET['category_id'])) {
 	$category_id = $_GET['category_id'];
