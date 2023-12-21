@@ -4,7 +4,7 @@
 
 	$pageTitle = 'Image Gallery';
 
-	if(isset($_SESSION['username_restaurant_qRewacvAqzA']) && isset($_SESSION['password_restaurant_qRewacvAqzA']))
+	if(isset($_SESSION['username']) && isset($_SESSION['password']))
 	{
 		include '../common/connect.php';
   		include '../common/functions.php'; 

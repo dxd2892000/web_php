@@ -45,14 +45,15 @@ $array = website_settings();
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="footer_widget">
-                    <h3>Subscribe to our contents</h3>
+                    <!-- <h3>Subscribe to our contents</h3>
                     <div class="subscribe_form">
                         <form action="#" class="subscribe_form" novalidate="true">
                             <input type="email" name="EMAIL" id="subs-email" class="form_input" placeholder="Email Address...">
                             <button type="submit" class="submit">SUBSCRIBE</button>
                             <div class="clearfix"></div>
                         </form>
-                    </div>
+                    </div> -->
+                    <iframe width="100%" height="250px" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.9192897099388!2d105.80540227510416!3d20.995872180645193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acbf0df2c0e5%3A0xd740a66998e1a0ed!2sUniversity%20of%20Science%2C%20Vietnam%20National%20University%20Hanoi!5e0!3m2!1sen!2s!4v1703139400058!5m2!1sen!2s" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>

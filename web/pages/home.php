@@ -34,6 +34,9 @@ include "../ingredients/header.php";
                         </div>
                     </div>
                 </div>
+                <div class="col-md-6 home-right-section">
+                    <img src="../../common/heroimg.png" alt="HOME IMAGE">
+                </div>
 
             </div>
         </div>
