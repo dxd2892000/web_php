@@ -1,5 +1,5 @@
 <div class="header-section">
-    <div class="container">
+    <div class="container-md">
         <div class="navbar">
             <a href="home.php">
                 <img src="../../common/logo.png" alt="HUS Logo" style="width: 150px;">

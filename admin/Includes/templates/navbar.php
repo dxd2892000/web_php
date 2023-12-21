@@ -1,24 +1,29 @@
     <!-- ADMIN NAVBAR HEADER -->
 
-    <header class="headerMenu сlearfix sb-page-header">   
+    <header class="headerMenu сlearfix sb-page-header">
         <div class="nav-header">
             <a class="navbar-brand" href="#">
                 Admin Panel
-            </a> 
+            </a>
         </div>
 
         <div class="nav-controls top-nav">
             <ul class="nav top-menu">
                 <li id="user-btn" class="main-li dropdown" style="background:none;">
                     <div class="dropdown show">
-                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="btn btn-secondary" href="logout.php" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-user"></i>
-                            <span class="username">Lock and Key</span>
+                            <span class="username">Logout</span>
                             <b class="caret"></b>
                         </a>
-                        <!-- DROPDOWN MENU -->
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="users.php?do=Edit&user_id=<?php echo $_SESSION['userid_restaurant_qRewacvAqzA'] ?>">
+
+                        <a class="btn btn-primary" href="users.php?do=Edit&user_id=<?php echo $_SESSION['userid'] ?>" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa"></i>
+                            <span class="username">Edit profile</span>
+                            <b class="caret"></b>
+                        </a>
+                        <!-- <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="users.php?do=Edit&user_id=<?php echo $_SESSION['userid'] ?>">
                                 <i class="fas fa-user-cog"></i>
                                 <span style="padding-left:6px">
                                     Edit Profile
@@ -37,7 +42,7 @@
                                     Logout
                                 </span>
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                 </li>
                 <li class="main-li webpage-btn">
@@ -68,7 +73,7 @@
                     </a>
                 </li>
 
-                <div class="dropdown-divider"></div> 
+                <div class="dropdown-divider"></div>
 
                 <div class="sidenav-menu-heading">
                     Menus
@@ -88,15 +93,15 @@
                         <span style="padding-left:6px;">Menus</span>
                     </a>
                 </li>
-                                
+
                 <div class="dropdown-divider"></div>
-                
+
                 <div class="sidenav-menu-heading">
                     Clients & Staff
                 </div>
-                
+
                 <div class="dropdown-divider"></div>
-                
+
                 <li>
                     <a href="clients.php" class="a-verMenu clients_link">
                         <i class="far fa-address-card icon-ver"></i>
@@ -109,7 +114,7 @@
                         <span style="padding-left:6px;">Users</span>
                     </a>
                 </li>
-                
+
 
                 <div class="dropdown-divider"></div>
 
@@ -119,7 +124,7 @@
 
     <!-- START BODY CONTENT  -->
 
-    <div id="content" style="margin-left:240px;"> 
+    <div id="content" style="margin-left:240px;">
         <section class="content-wrapper" style="width: 100%;padding: 70px 0 0;">
             <div class="inside-page" style="padding:20px">
                 <div class="page_title_top" style="margin-bottom: 1.5rem!important;">

@@ -176,6 +176,7 @@ include "../ingredients/header.php";
         font-weight: 300;
         font-size: 17px;
     }
+
     a {
         color: black;
     }

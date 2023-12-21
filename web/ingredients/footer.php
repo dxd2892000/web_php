@@ -7,7 +7,7 @@
                     <script type="text/javascript">
                         document.write(new Date().getFullYear())
                     </script>
-                    HUS FOODIES by PHONG
+                    HUS FOODIES
                 </div>
             </div>
             <div class="col-md-6 xs-padding">
