@@ -27,7 +27,7 @@ include "../ingredients/header.php";
                                 GỌI MÓN
                                 <i class="fas fa-angle-right"></i>
                             </a>
-                            <a href="#menus" class="bttn_style_2" style="display: flex;justify-content: center;align-items: center;">
+                            <a href="menu.php" class="bttn_style_2" style="display: flex;justify-content: center;align-items: center;">
                                 MENU
                                 <i class="fas fa-angle-right"></i>
                             </a>

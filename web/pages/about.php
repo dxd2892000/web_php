@@ -27,3 +27,8 @@ include "../ingredients/header.php";
     include "../ingredients/footer.php" ?>
     ?>
 </body>
+<style>
+    .about-section{
+        background-color: #f5fcf4;
+    }
+</style>

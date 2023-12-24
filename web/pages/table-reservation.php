@@ -70,11 +70,9 @@ include "../ingredients/header.php";
                 $selected_date = $_POST['reservation_date'];
                 $selected_time = $_POST['reservation_time'];
                 $number_of_guests = $_POST['number_of_guests'];
-                echo "<br>" . $selected_date;
                 $query = $conn->query("SELECT table_id FROM tables WHERE table_id NOT IN (SELECT t.table_id FROM tables t, reservations r WHERE t.table_id = r.table_id AND Date(r.selected_time) = $selected_date AND liberated = 0 AND canceled = 0)");
 
                 $rows = $query->fetch_all(MYSQLI_ASSOC);
-                var_dump($rows);
 
                 if ($query->num_rows == 0) {
             ?>
