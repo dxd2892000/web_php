@@ -36,7 +36,7 @@ if (isset($_GET['do'])) {
 
 			}
 		}else{
-			header("Location: ../dashboard.php");
+			header("Location:../dashboard.php");
 		}
 	}elseif($do == "Cancel"){
 		if (isset($_GET['order_id'])) {
@@ -54,7 +54,24 @@ if (isset($_GET['do'])) {
 
 			}
 		}else{
-			header("Location: ../dashboard.php");
+			if (isset($_GET['data'])) {
+				$reservation_id = $_GET['data'];
+				$query = $conn->query("UPDATE reservations SET canceled = 1, cancellation_reason = 'Khách báo hủy' WHERE reservation_id = '$reservation_id'");
+				if ($query === TRUE) {
+				?>
+					<script>
+						$(document).ready(function() {
+							alert("Hủy thành công");
+							window.location.href = "../dashboard.php";
+						});
+					</script>
+	<?php
+	
+				}
+			}else{
+				header("Location: ../dashboard.php");
+			}
+			
 		}
 	}elseif($do == "Liberate"){
 		if (isset($_GET['data'])) {
@@ -65,24 +82,6 @@ if (isset($_GET['do'])) {
 				<script>
 					$(document).ready(function() {
 						alert("Cập nhật thành công");
-						window.location.href = "../dashboard.php";
-					});
-				</script>
-<?php
-
-			}
-		}else{
-			header("Location: ../dashboard.php");
-		}
-	}elseif($do == "Cancel"){
-		if (isset($_GET['data'])) {
-			$reservation_id = $_GET['data'];
-			$query = $conn->query("UPDATE reservations SET canceled = 1 WHERE reservation_id = '$reservation_id'");
-			if ($query === TRUE) {
-			?>
-				<script>
-					$(document).ready(function() {
-						alert("Hủy thành công");
 						window.location.href = "../dashboard.php";
 					});
 				</script>

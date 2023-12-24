@@ -184,13 +184,8 @@ include "../ingredients/header.php";
         font-size: 26px;
         font-weight: bold;
         width: fit-content;
-        /* color: #705c32; */
+
     }
-
-    /* .active_category {
-        color: #907333;
-    } */
-
 
     .menu-image {
         position: relative;

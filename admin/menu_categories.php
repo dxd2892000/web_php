@@ -32,12 +32,12 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
                 <!-- ADD NEW CATEGORY BUTTON -->
 
-                <button class="btn btn-success btn-sm" style="margin-bottom: 10px;">
-                    <a href="menu_categories.php?do=Add">
+                <div class="above-table" style="margin-bottom: 1rem!important;">
+                    <a href="menu_categories.php?do=Add" class="btn btn-success">
                         <i class="fa fa-plus"></i>
-                        Add Category
+                        <span>Add new Category</span>
                     </a>
-                </button>
+                </div>
                 <!-- MENU CATEGORIES TABLE -->
                 <table class="table table-bordered categories-table">
                     <thead>
@@ -115,7 +115,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                                 <label for="menu_name">Category Name</label>
                                 <input type="text" class="form-control" placeholder="Category Name" name="category_name">
                                 <?php
-                                $flag_add_menu_form = 0;
+                                $flag_add_cate_form = 0;
 
                                 if (isset($_POST['add_new_category'])) {
                                     if (empty(test_input($_POST['category_name']))) {
@@ -125,7 +125,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
                                         </div>
                                 <?php
 
-                                        $flag_add_menu_form = 1;
+                                        $flag_add_cate_form = 1;
                                     }
                                 }
                                 ?>
@@ -141,7 +141,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
 
         /*** ADD NEW CATEGORY ***/
 
-        if (isset($_POST['add_new_category']) && $_SERVER['REQUEST_METHOD'] == 'POST' && $flag_add_menu_form == 0) {
+        if (isset($_POST['add_new_category']) && $_SERVER['REQUEST_METHOD'] == 'POST' && $flag_add_cate_form == 0) {
             $category_name = test_input($_POST['category_name']);
             try {
                 $query = $conn->query("INSERT INTO menu_categories(category_name) VALUES('$category_name') ");

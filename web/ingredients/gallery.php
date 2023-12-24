@@ -1,6 +1,6 @@
 <div class="gallery">
 <div class="container">
-  <h2>MỘT SỐ HÌNH ẢNH</h2>  
+  <h2>IMAGE GALLERY</h2>  
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
